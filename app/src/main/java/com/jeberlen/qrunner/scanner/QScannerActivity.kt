@@ -2,11 +2,16 @@ package com.jeberlen.qrunner.scanner
 
 import android.content.Intent
 import android.os.Bundle
+import android.provider.AlarmClock
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.google.zxing.Result
-import com.jeberlen.qrunner.R
+import com.jeberlen.qrunner.MainActivity
+import com.jeberlen.qrunner.viewer.AppViewerActivity
 import me.dm7.barcodescanner.zxing.ZXingScannerView
+import org.jsoup.Jsoup
+import org.jsoup.safety.Whitelist
+import org.jsoup.safety.Cleaner
 
 
 class QScannerActivity : AppCompatActivity(), ZXingScannerView.ResultHandler {
@@ -33,31 +38,22 @@ class QScannerActivity : AppCompatActivity(), ZXingScannerView.ResultHandler {
     }
 
     override fun handleResult(rawResult: Result) {
-        Log.d("result", rawResult.text)
-        Log.d("result", rawResult.barcodeFormat.toString())
+        val whitelist = Whitelist.relaxed()
+        val res = Jsoup.clean(rawResult.toString(), whitelist)
 
-        //mScannerView.resumeCameraPreview(this);
-        val intent = Intent()
-        intent.putExtra("SCAN_RESULT", rawResult.text)
-        setResult(RESULT_OK, intent)
-        finish()
-    }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == 0) {
-            if (resultCode == RESULT_OK) {
-                val contents = data?.getStringExtra("SCAN_RESULT")
-                val qScanner = QScanner(this)
-                // TODO: Change to handling image from phone
-                val frame = qScanner.createFrame(this)
-                qScanner.detect(frame)
+        if (Jsoup.isValid(res, whitelist)) {
+            // Intend to open WebView activity using data from QR
+            val intent = Intent(this, AppViewerActivity::class.java).apply {
+                putExtra(AlarmClock.EXTRA_MESSAGE, rawResult.text)
             }
 
-            if (resultCode == RESULT_CANCELED) {
-                Log.d(TAG, "Scan cancelled")
-            }
+            startActivity(intent)
+        } else {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
         }
+
     }
 
 }
