@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "316724055281",
+    "firebase_url": "https://qrunner-dd4ae.firebaseio.com",
+    "project_id": "qrunner-dd4ae",
+    "storage_bucket": "qrunner-dd4ae.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:316724055281:android:71a91223e5e84616426d50",
+        "android_client_info": {
+          "package_name": "com.jeberlen.qrunner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "316724055281-ifpfkijf0ilh8f3dvhopsegs8f20uhci.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.jeberlen.qrunner",
+            "certificate_hash": "258f8376b6b007959eb9818a9d85fd00d8e75104"
+          }
+        },
+        {
+          "client_id": "316724055281-o2e1vrflro6k373g79ao8qt8fgsv3752.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQWajw79YDBkycuNs_GX-24SPKYmReEQQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "316724055281-o2e1vrflro6k373g79ao8qt8fgsv3752.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
