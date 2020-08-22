@@ -17,7 +17,7 @@ import org.jsoup.safety.Whitelist
 
 class QScanner(private val context: Context) {
 
-    private val tag = "QScanner"
+    private val TAG = "QScanner"
 
     private val barcodeDetector = BarcodeDetector.Builder(context)
         .setBarcodeFormats(Barcode.DATA_MATRIX or Barcode.QR_CODE)
@@ -44,15 +44,7 @@ class QScanner(private val context: Context) {
         val qrCode = barcodeDetector.detect(frame)
 
         val qrCodeValue = getCodeValue(qrCode)
-        Log.d(tag, "detect 2: $qrCodeValue")
-        val whitelist = Whitelist.relaxed()
-        if (Jsoup.isValid(qrCode.toString(), whitelist)) {
-            // Intend to open WebView activity using data from QR
-            val intent = Intent(context, AppViewerActivity::class.java).apply {
-                putExtra(EXTRA_MESSAGE, qrCodeValue)
-            }
-            context.startActivity(intent)
-        }
+
     }
 
 
