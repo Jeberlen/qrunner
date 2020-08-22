@@ -29,14 +29,13 @@ class QScannerActivity : AppCompatActivity(), ZXingScannerView.ResultHandler {
 
     override fun onPause() {
         super.onPause()
-        // Stop camera on pause
         scannerView.stopCamera()
     }
 
     override fun handleResult(rawResult: Result) {
         Log.d("result", rawResult.text)
         Log.d("result", rawResult.barcodeFormat.toString())
-        //If you would like to resume scanning, call this method below:
+
         //mScannerView.resumeCameraPreview(this);
         val intent = Intent()
         intent.putExtra("SCAN_RESULT", rawResult.text)
