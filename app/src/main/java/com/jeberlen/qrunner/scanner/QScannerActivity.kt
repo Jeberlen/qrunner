@@ -42,7 +42,10 @@ class QScannerActivity : AppCompatActivity() {
             override fun surfaceCreated(holder: SurfaceHolder) {
                 // Check if application has permissions to use the camera
                 if (ActivityCompat.checkSelfPermission(context, camPermission) !=
-                    PackageManager.PERMISSION_GRANTED) { return }
+                    PackageManager.PERMISSION_GRANTED
+                ) {
+                    return
+                }
 
                 try {
                     qScanner.cameraSource.start(cameraView.holder)
@@ -51,10 +54,13 @@ class QScannerActivity : AppCompatActivity() {
                 }
             }
 
-            override fun surfaceChanged(holder: SurfaceHolder,
-                                        format: Int,
-                                        width: Int,
-                                        height: Int) {}
+            override fun surfaceChanged(
+                holder: SurfaceHolder,
+                format: Int,
+                width: Int,
+                height: Int
+            ) {
+            }
 
             override fun surfaceDestroyed(holder: SurfaceHolder) {
                 qScanner.cameraSource.stop();
@@ -69,9 +75,6 @@ class QScannerActivity : AppCompatActivity() {
                 if (barcode.size() != 0) {
                     val qrCodeValue = qScanner.getCodeValue(barcode)
 
-                    // Might be changed in redesign
-                    barcodeInfo.post { barcodeInfo.text = qrCodeValue }
-
                     val intent = Intent(context, AppViewerActivity::class.java).apply {
                         putExtra(AlarmClock.EXTRA_MESSAGE, qrCodeValue)
                     }
@@ -82,5 +85,13 @@ class QScannerActivity : AppCompatActivity() {
             }
 
         })
+
+    }
+
+    override fun onBackPressed() {
+        val intent = Intent(Intent.ACTION_MAIN)
+        intent.addCategory(Intent.CATEGORY_HOME)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        startActivity(intent)
     }
 }

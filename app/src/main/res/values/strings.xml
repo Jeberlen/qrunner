@@ -2,4 +2,7 @@
     <string name="app_name">qrunner</string>
     <string name="without_camera_permission">Without camera permission this application provides no value.</string>
     <string name="please_grant_permission">Please grant this permission by restarting the application</string>
+    <string name="scan_a_qr_code">Scan a QR code containing a HTML/Javascript game</string>
+    <string name="application_logo">Application logo</string>
+    <string name="press_back_to_exit_game">Press back to exit game</string>
 </resources>
