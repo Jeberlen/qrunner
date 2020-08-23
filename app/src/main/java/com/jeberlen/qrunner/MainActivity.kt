@@ -13,19 +13,15 @@ import com.jeberlen.qrunner.viewer.AppViewerActivity
 
 class MainActivity : AppCompatActivity() {
 
-    private val TAG = "MainActivity"
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        Log.e(TAG, "onCreate")
-
-
         val intent = Intent(this, QScannerActivity::class.java)
         startActivity(intent)
 
-/*
+        /*
+        // Keep this for later use - might be moved to a test class
         val myQRCode = BitmapFactory.decodeResource(resources, R.drawable.test)
 
         val myFrame: Frame = Frame.Builder()
@@ -36,11 +32,11 @@ class MainActivity : AppCompatActivity() {
 
 
         val intent = Intent(this, AppViewerActivity::class.java).apply {
-            putExtra(AlarmClock.EXTRA_MESSAGE, qScanner.detect(myFrame))
+            putExtra(AlarmClock.EXTRA_MESSAGE, qScanner.detectFromFrame(myFrame))
         }
 
         startActivity(intent)
-*/
+        */
 
     }
 

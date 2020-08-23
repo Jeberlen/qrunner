@@ -9,11 +9,9 @@ import com.google.android.gms.vision.barcode.Barcode
 import com.google.android.gms.vision.barcode.BarcodeDetector
 
 
-class QScanner(private val context: Context) {
+class QScanner(context: Context) {
 
-    private val TAG = "QScanner"
-
-    val barcodeDetector = BarcodeDetector.Builder(context)
+    val barcodeDetector: BarcodeDetector = BarcodeDetector.Builder(context)
         .setBarcodeFormats(Barcode.DATA_MATRIX or Barcode.QR_CODE)
         .build()
 
@@ -29,6 +27,7 @@ class QScanner(private val context: Context) {
         return null
     }
 
+    // Used for testing purposes
     fun detectFromFrame(frame: Frame): String? {
         val qrCode = barcodeDetector.detect(frame)
         return getCodeValue(qrCode)
