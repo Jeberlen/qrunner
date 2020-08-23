@@ -4,28 +4,58 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDarkGrey"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/upperTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/without_camera_permission"
-        app:layout_constraintBottom_toTopOf="@+id/lowerTextView"
+    <ImageView
+        android:id="@+id/logoView"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:contentDescription="@string/application_logo"
+        android:scaleType="fitXY"
+        android:src="@drawable/image"
+        app:layout_constraintBottom_toTopOf="@+id/innerConstraintLayout"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/lowerTextView"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/innerConstraintLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/please_grant_permission"
+        android:background="@color/colorPrimaryDark"
+        android:paddingVertical="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/upperTextView" />
+        app:layout_constraintVertical_weight="1">
+
+        <TextView
+            android:id="@+id/upperTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:text="@string/without_camera_permission"
+            android:textAlignment="center"
+            android:textSize="36sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/lowerTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/please_grant_permission"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/upperTextView" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

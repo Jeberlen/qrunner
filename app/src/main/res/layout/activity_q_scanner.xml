@@ -17,13 +17,30 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:text=""
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:padding="30dp"
+        android:text="@string/scan_a_qr_code"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:typeface="normal"
+        android:background="@color/colorPrimaryDarkGrey"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/camera_view" />
+
+    <TextView
+        android:id="@+id/border"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:background="@drawable/border"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="@+id/camera_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
