@@ -1,0 +1,79 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>title</title>
+    <style>
+    	* { padding: 0; }
+
+    	canvas { background: #eee; display: block; }
+    </style>
+    
+  </head>
+  <body>
+    <canvas id="myCanvas" width="350px" height="350px"></canvas>
+
+    <button onclick="moveup()">UP</button>
+    <button onclick="movedown()">DOWN</button>
+    <button onclick="moveleft()">LEFT</button>
+    <button onclick="moveright()">RIGHT</button>
+
+    <script>
+        var canvas = document.getElementById("myCanvas");
+        var ctx = canvas.getContext("2d");
+
+        var x = canvas.width / 2;
+        var y = canvas.height - 30;
+        var dx = 2, dy = 2
+        var left = false, right = false, up = false, down = false
+
+        function draw() {
+            ctx.beginPath();
+            ctx.arc(x, y, 10, 0, Math.PI*2);
+            ctx.fillStyle = "#0095DD";
+            ctx.fill();
+            ctx.closePath();
+            if(left) {
+                x -= dx
+            } else if (right) {
+                x += dx
+            } else if (up) {
+                y -= dy
+            } else if (down) {
+                y += dy
+            }
+
+        }
+        setInterval(draw, 10);
+
+        function moveup() {
+          left = false
+          right = false
+          up = true
+          down = false
+        }
+
+        function movedown() {
+            left = false
+            right = false
+            up = false
+            down = true
+        }
+
+        function moveleft() {
+            left = true
+            right = false
+            up = false
+            down = false
+        }
+
+        function moveright() {
+            left = false
+            right = true
+            up = false
+            down = false
+        }
+
+    </script>
+
+  </body>
+</html>
